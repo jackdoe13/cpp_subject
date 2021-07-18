@@ -1,12 +1,4 @@
 ﻿  Chess.cpp
   Chess_Piece.cpp
   코드를 생성하고 있습니다...
-Chess_Piece.obj : error LNK2005: "public: __thiscall Piece::Piece(char,int,int)" (??0Piece@@QAE@DHH@Z)이(가) Chess.obj에 이미 정의되어 있습니다.
-Chess_Piece.obj : error LNK2005: "public: __thiscall Piece::Piece(void)" (??0Piece@@QAE@XZ)이(가) Chess.obj에 이미 정의되어 있습니다.
-Chess_Piece.obj : error LNK2005: "public: bool __thiscall Piece::MovePos(char,int)" (?MovePos@Piece@@QAE_NDH@Z)이(가) Chess.obj에 이미 정의되어 있습니다.
-Chess_Piece.obj : error LNK2005: "public: bool __thiscall Piece::SetPos(char,int)" (?SetPos@Piece@@QAE_NDH@Z)이(가) Chess.obj에 이미 정의되어 있습니다.
-Chess_Piece.obj : error LNK2005: "public: bool __thiscall Piece::getAlive(void)" (?getAlive@Piece@@QAE_NXZ)이(가) Chess.obj에 이미 정의되어 있습니다.
-Chess_Piece.obj : error LNK2005: "public: int __thiscall Piece::getMoveset(void)" (?getMoveset@Piece@@QAEHXZ)이(가) Chess.obj에 이미 정의되어 있습니다.
-Chess_Piece.obj : error LNK2005: "public: char __thiscall Piece::getPosX(void)" (?getPosX@Piece@@QAEDXZ)이(가) Chess.obj에 이미 정의되어 있습니다.
-Chess_Piece.obj : error LNK2005: "public: int __thiscall Piece::getPosY(void)" (?getPosY@Piece@@QAEHXZ)이(가) Chess.obj에 이미 정의되어 있습니다.
-C:\Users\334\Documents\cpp_subject\Chess\Debug\Chess.exe : fatal error LNK1169: 여러 번 정의된 기호가 있습니다.
+  Chess.vcxproj -> C:\Users\chess\Documents\projects\cpp_subject\Chess\Debug\Chess.exe
