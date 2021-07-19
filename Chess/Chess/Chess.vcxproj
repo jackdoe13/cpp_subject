@@ -144,7 +144,7 @@
     <ClCompile Include="Chess_Piece.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="chess_obj.h" />
+    <ClInclude Include="chess_initialize.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

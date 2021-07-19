@@ -27,10 +27,28 @@ public:
 	}
 
 	void config() {
+		cout << "1. 현재 말들의 위치 >>" << endl;
 		for (int i = 0; i < 8; i++) {
 			for (int j = 0; j < 8; j++) {
 				cout << board[i][j] << " ";
 			}
+			cout << endl;
+		}
+
+		cout << "2. 생존중인 말들 목록 >>" << endl;
+		for (int i = 0; i < 8; i++) {
+			cout << list_w.phones[i].getClan() << " ";
+			cout << list_w.phones[i].getMoveset().mv_backward << list_w.phones[i].getMoveset().mv_flag << list_w.phones[i].getMoveset().mv_forward << list_w.phones[i].getMoveset().mv_side_back << list_w.phones[i].getMoveset().mv_side_for << " ";
+			cout << list_w.phones[i].getPosX() << " ";
+			cout << list_w.phones[i].getPosY() << " ";
+			cout << endl;
+		}
+
+		for (int i = 0; i < 8; i++) {
+			cout << list_b.phones[i].getClan() << " ";
+			cout << list_b.phones[i].getMoveset().mv_backward << list_b.phones[i].getMoveset().mv_flag << list_b.phones[i].getMoveset().mv_forward << list_b.phones[i].getMoveset().mv_side_back << list_b.phones[i].getMoveset().mv_side_for << " ";
+			cout << list_b.phones[i].getPosX() << " ";
+			cout << list_b.phones[i].getPosY() << " ";
 			cout << endl;
 		}
 	}

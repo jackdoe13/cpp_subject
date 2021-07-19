@@ -1,4 +1,4 @@
 ﻿  Chess.cpp
-  Chess_Piece.cpp
-  코드를 생성하고 있습니다...
-  Chess.vcxproj -> C:\Users\chess\Documents\projects\cpp_subject\Chess\Debug\Chess.exe
+C:\Users\Public\Documents\cpp_subject\Chess\Chess\chess_initialize.h(97,19): warning C4838: 'int'에서 'SHORT'(으)로의 변환에는 축소 변환이 필요합니다.
+C:\Users\Public\Documents\cpp_subject\Chess\Chess\chess_initialize.h(97,21): warning C4838: 'int'에서 'SHORT'(으)로의 변환에는 축소 변환이 필요합니다.
+  Chess.vcxproj -> C:\Users\Public\Documents\cpp_subject\Chess\Debug\Chess.exe
