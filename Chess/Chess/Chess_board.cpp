@@ -1,6 +1,8 @@
 #pragma once
 
 #include <iostream>
+#include <random>
+#include <time.h>
 #include "Chess_Piece.cpp"
 
 using namespace std;
@@ -20,7 +22,7 @@ private:
 	King target;
 
 public:
-	Board(bool** init_board, struct piece_list list_w, King target) {
+	Board(bool** init_board, struct piece_list &list_w, King &target) {
 		board = init_board;
 		this->list_w = list_w;
 		this->target = target;

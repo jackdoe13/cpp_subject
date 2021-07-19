@@ -4,7 +4,18 @@
 
 void gotoxy(int x, int y);
 void SelectMenu();
-Board initialize();
+Board* initialize();
+bool startGame(Board& board);
+
+bool startGame(Board& board) {
+    cout << "머기중..." << endl;
+    Sleep(5000);
+
+    cout << "끗." << endl;
+    system("pause");
+
+    return true;
+}
 
 void SelectMenu() {
     int mode;
@@ -51,40 +62,36 @@ void SelectMenu() {
     }
 }
 
-Board initialize() {
+Board* initialize() {
     bool** board;
-    struct piece_list list_w;
+    struct piece_list list_w { NULL };
 
     board = new bool* [MAX_X];
     for (int i = 0; i < MAX_X; i++) {
-        board[i] = new bool[MAX_X];     // 아직 delete 안만듬. 
+        board[i] = new bool[MAX_X] {false};     // 아직 delete 안만듬. 
     }
 
-    for (int i = 0; i < 8; i++) {
-        for (int j = 0; j < 8; j++) {
-            board[i][j] = false;
-        }
-    }
+    // white 폰 8개(수정 예정 : 무작위로 말 배치)
+    srand(time(NULL));
 
-    // white 폰 8개
     moveSet mv1 = { 2, 0, 1, 0 };
     Phone phones_w[8];
     for (int i = 0; i < 8; i++) {
         phones_w[i] = Phone(64 + (MAX_X - 1), 1 + i, mv1, 'w');
-        board[1][i] = true;             // 좀더 효과적인 방법은 없을까?
+        board[MAX_X - 2][i] = true;
     }
 
-    // black 폰 8개
-    moveSet mv2 = { 0, 0, 0, 0 };
-    King king = { 'a', 0, mv2, 'b' };
+    // black 킹 1개
+    King target = King();
+    board[0][2] = true;
 
     list_w.phones = phones_w;
 
-    Board gameBoard = Board(board, list_w, king);
+    Board gameBoard(board, list_w, target);
 
     gameBoard.config();
 
-    return gameBoard;
+    return &gameBoard;
 }
 
 void gotoxy(int x, int y) {

@@ -1,10 +1,7 @@
 ﻿  Chess.cpp
-C:\Users\334\Documents\cpp_subject\Chess\Chess\chess_initialize.h(88,50): error C2440: '<function-style-cast>': 'initializer list'에서 'Board'(으)로 변환할 수 없습니다.
-C:\Users\334\Documents\cpp_subject\Chess\Chess\chess_initialize.h(88,50): message : 소스 형식을 가져올 수 있는 생성자가 없거나 생성자 오버로드 확인이 모호합니다.
-C:\Users\334\Documents\cpp_subject\Chess\Chess\chess_initialize.h(88,21): error C2512: 'Board': 사용할 수 있는 적절한 기본 생성자가 없습니다.
-C:\Users\334\Documents\cpp_subject\Chess\Chess\Chess_board.cpp(16,7): message : 'Board' 선언을 참조하십시오.
-C:\Users\334\Documents\cpp_subject\Chess\Chess\chess_initialize.h(97,19): warning C4838: 'int'에서 'SHORT'(으)로의 변환에는 축소 변환이 필요합니다.
-C:\Users\334\Documents\cpp_subject\Chess\Chess\chess_initialize.h(97,21): warning C4838: 'int'에서 'SHORT'(으)로의 변환에는 축소 변환이 필요합니다.
-  Chess_board.cpp
+C:\Users\chess\Documents\projects\cpp_subject\Chess\Chess\chess_initialize.h(97,19): warning C4838: 'int'에서 'SHORT'(으)로의 변환에는 축소 변환이 필요합니다.
+C:\Users\chess\Documents\projects\cpp_subject\Chess\Chess\chess_initialize.h(97,21): warning C4838: 'int'에서 'SHORT'(으)로의 변환에는 축소 변환이 필요합니다.
   Chess_Piece.cpp
+  Chess_board.cpp
   코드를 생성하고 있습니다...
+  Chess.vcxproj -> C:\Users\chess\Documents\projects\cpp_subject\Chess\Debug\Chess.exe

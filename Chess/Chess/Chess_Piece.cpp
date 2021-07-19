@@ -1,8 +1,5 @@
 #pragma once
 
-#include <random>
-#include <time.h>
-
 #define MAX_X 8			// xÁÂÇ¥ ÃÖ´ëÄ¡
 #define MAX_Y 8			// yÁÂÇ¥ ÃÖ´ëÄ¡
 
@@ -77,15 +74,15 @@ public:
 		clan = 'b';
 	}
 
-	bool SetPos(char x, int y) {
+	virtual bool SetPos(char x, int y) {
 		posX = x;
 		posY = y;
 
 		return true;
 	}
 
-	bool MovePos(char nx, int ny) {
-
+	virtual bool MovePos(char nx, int ny) {
+		return true;
 	}
 
 	virtual bool getAlive() {
@@ -161,22 +158,24 @@ public:
 	}
 
 };
-/*
+
 class Bishop : public Piece {
-protected:
-	bool isAlive;
-	int moveset;
-
-	char posX;
-	int posY;
-
 public:
-	Bishop();
+	Bishop(char x, int y, moveSet mv, char clan) {
+		isAlive = true;
+		mset = mv;
+		this->clan = clan;
+		SetPos(x, y);
+	}
 
-
-
+	Bishop() {
+		isAlive = true;
+		mset = { 0, 0, 0, 0, 0 };
+		clan = 'w';
+		SetPos('a', 0);
+	}
 };
-
+/*
 class Rook : public Piece {
 protected:
 	bool isAlive;

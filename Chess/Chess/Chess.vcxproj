@@ -146,6 +146,9 @@
   <ItemGroup>
     <ClInclude Include="chess_initialize.h" />
   </ItemGroup>
+  <ItemGroup>
+    <Media Include="res\K Project OST Showdown.mp3" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

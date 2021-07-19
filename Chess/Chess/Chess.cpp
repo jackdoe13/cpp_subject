@@ -16,11 +16,16 @@
 using namespace std;
 
 int main() {
-    SelectMenu();
-    system("cls");
+    while (true) {
+        SelectMenu();
+        system("cls");
 
-    // 게임 보드 생성
-    Board board = initialize();
+        // 게임 보드 생성 (이슈 : 반환 값을 만들게 되면 넘어온 후에 소멸작업이 실행됨. 게임 진행 불가.)
+        Board *board = initialize();
 
+        startGame(*board);
+        delete board;
+    }
+    
     return 0;
 }
