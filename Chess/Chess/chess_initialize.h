@@ -53,7 +53,7 @@ void SelectMenu() {
 
 Board initialize() {
     bool** board;
-    struct piece_list list_b, list_w;
+    struct piece_list list_w;
 
     board = new bool* [MAX_X];
     for (int i = 0; i < MAX_X; i++) {
@@ -75,17 +75,12 @@ Board initialize() {
     }
 
     // black Æù 8°³
-    moveSet mv2 = { 2, 0, 1, 0 };
-    Phone phones_b[8];
-    for (int i = 0; i < 8; i++) {
-        phones_b[i] = Phone(66, 1 + i, mv2, 'b');
-        board[MAX_X - 2][i] = true;
-    }
+    moveSet mv2 = { 0, 0, 0, 0 };
+    King king = { 'a', 0, mv2, 'b' };
 
-    list_b.phones = phones_b;
     list_w.phones = phones_w;
 
-    Board gameBoard = Board(board, list_b, list_w);
+    Board gameBoard = Board(board, list_w, king);
 
     gameBoard.config();
 

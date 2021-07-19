@@ -17,13 +17,13 @@ class Board {
 private:
 	bool** board;
 	struct piece_list list_w;
-	struct piece_list list_b;
+	King target;
 
 public:
-	Board(bool** init_board, struct piece_list list_b, struct piece_list list_w) {
+	Board(bool** init_board, struct piece_list list_w, King target) {
 		board = init_board;
 		this->list_w = list_w;
-		this->list_b = list_b;
+		this->target = target;
 	}
 
 	void config() {
@@ -44,12 +44,11 @@ public:
 			cout << endl;
 		}
 
-		for (int i = 0; i < 8; i++) {
-			cout << list_b.phones[i].getClan() << " ";
-			cout << list_b.phones[i].getMoveset().mv_backward << list_b.phones[i].getMoveset().mv_flag << list_b.phones[i].getMoveset().mv_forward << list_b.phones[i].getMoveset().mv_side_back << list_b.phones[i].getMoveset().mv_side_for << " ";
-			cout << list_b.phones[i].getPosX() << " ";
-			cout << list_b.phones[i].getPosY() << " ";
-			cout << endl;
-		}
+		cout << "3. 왕에 대한 정보 >>" << endl;
+		cout << target.getClan() << " ";
+		cout << target.getMoveset().mv_backward << target.getMoveset().mv_flag << target.getMoveset().mv_forward << target.getMoveset().mv_side_back << target.getMoveset().mv_side_for << " ";
+		cout << target.getPosX() << " ";
+		cout << target.getPosY() << " ";
+		cout << endl;
 	}
 };

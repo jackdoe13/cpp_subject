@@ -1,5 +1,8 @@
 #pragma once
 
+#include <random>
+#include <time.h>
+
 #define MAX_X 8			// x좌표 최대치
 #define MAX_Y 8			// y좌표 최대치
 
@@ -13,7 +16,7 @@ struct moveSet {
 
 class Piece {
 protected:
-	int code;			// 기물 코드 (1:킹, 2:폰, ...)
+	int PieceID;		// 기물 ID (0 : 킹, 1 : 퀸, 2 : 폰, 3 : 비숍, 4 : 룩, 5 : 나이트)
 	bool isAlive;		// 말의 생존여부
 	moveSet mset;		// 이동가능한 칸 수
 	char clan;			// 소속팀
@@ -23,30 +26,55 @@ protected:
 	int posY;
 
 public:
-	Piece(char x, int y, moveSet mv, char clan) {
-		isAlive = true;
-		mset = mv;
-		this->clan = clan;
-		SetPos(x, y);
-	}
+	virtual bool MovePos(char nx, int ny) = 0;
 
-	Piece() {
-		isAlive = true;
-		mset.mv_forward = 1;
-		mset.mv_backward = 1;
-		mset.mv_side_for = 1;
-		mset.mv_side_back = 1;
-		SetPos('a', 0);
-	}
+	virtual bool SetPos(char x, int y) = 0;
 
-	bool MovePos(char nx, int ny) {
-		// 해당 위치로 이동. 만약 이동하는 칸에 적 말이 있으면 처치.
+	// getter & setter
+	virtual bool getAlive() {
+		return isAlive;
+	}
+	virtual moveSet getMoveset() {
+		return mset;
+	}
+	virtual char getPosX() {
+		return posX;
+	}
+	virtual int getPosY() {
+		return posY;
+	}
+	virtual char getClan() {
+		return clan;
+	}
+};
+
+class King : Piece {
+private:
+	int check;
+
+	bool isCheck(char &kx, int &ky, int &x, int &y, Piece &obj) {
 		if (true) {
-
-
+			return true;
 		}
+		else {
+			return false;
+		}
+		
+	}
 
+	bool isCheckMate() {
 		return true;
+	}
+
+
+public:
+	King() {
+		PieceID = 0;
+		isAlive = true;
+		check = 0;
+		SetPos('a', 0);
+		mset = { 0, 0, 0, 0, 0 };
+		clan = 'b';
 	}
 
 	bool SetPos(char x, int y) {
@@ -56,40 +84,24 @@ public:
 		return true;
 	}
 
-	// getter & setter
-	bool getAlive() {
+	bool MovePos(char nx, int ny) {
+
+	}
+
+	virtual bool getAlive() {
 		return isAlive;
 	}
-	moveSet getMoveset() {
+	virtual moveSet getMoveset() {
 		return mset;
 	}
-	char getPosX() {
+	virtual char getPosX() {
 		return posX;
 	}
-	int getPosY() {
+	virtual int getPosY() {
 		return posY;
 	}
-	char getClan() {
+	virtual char getClan() {
 		return clan;
-	}
-};
-
-class King : public Piece {
-private:
-	bool isCheck() {
-		return true;
-	}
-	bool isCheckMate() {
-		return true;
-	}
-
-
-public:
-	King(char x, int y, moveSet mv, char clan) {
-		isAlive = true;
-		mset = mv;
-		this->clan = clan;
-		SetPos(x, y);
 	}
 };
 
@@ -97,10 +109,7 @@ class Phone : public Piece {
 private:
 	bool isRush;
 
-	void Change_Piece(Piece& dead_piece) {
-
-	}
-	void Change_moveset() {
+	void Change_line(int &x, int &y) {				// 줄의 끝에 도달하면 줄 변경
 
 	}
 
@@ -116,28 +125,43 @@ public:
 	Phone() {
 		isAlive = true;
 		isRush = true;
-		mset.mv_forward = 1;
-		mset.mv_backward = 1;
-		mset.mv_side_for = 1;
-		mset.mv_side_back = 1;
-		SetPos('a', 0);
+		clan = 'w';
+		mset = { 0, 0, 0, 0, 0 };
+	}
+
+	bool SetPos(char x, int y) {
+		posX = x;
+		posY = y;
+
+		return true;
+	}
+
+	bool MovePos(char nx, int ny) {
+		posX = nx;
+		posY = ny;
+
+		return true;
 	}
 };
 
-/*
 class Knight : public Piece {
-protected:
-	bool isAlive;
-	int moveset;
-
-	char posX;
-	int posY;
-
 public:
-	Knight();
+	Knight(char x, int y, moveSet mv, char clan) {
+		isAlive = true;
+		mset = mv;
+		this->clan = clan;
+		SetPos(x, y);
+	}
+
+	Knight() {
+		isAlive = true;
+		mset = { 0, 0, 0, 0, 0 };
+		clan = 'w';
+		SetPos('a', 0);
+	}
 
 };
-
+/*
 class Bishop : public Piece {
 protected:
 	bool isAlive;
