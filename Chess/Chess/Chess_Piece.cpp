@@ -13,19 +13,19 @@ struct moveSet {
 
 class Piece {
 protected:
-	int PieceID;		// 기물 ID (0 : 킹, 1 : 퀸, 2 : 폰, 3 : 비숍, 4 : 룩, 5 : 나이트)
-	bool isAlive;		// 말의 생존여부
-	moveSet mset;		// 이동가능한 칸 수
-	char clan;			// 소속팀
+	int PieceID = -1;					// 기물 ID (0 : 킹, 1 : 퀸, 2 : 폰, 3 : 비숍, 4 : 룩, 5 : 나이트)
+	bool isAlive = false;				// 말의 생존여부
+	moveSet mset = { 0, 0, 0, 0, 0 };	// 이동가능한 칸 수
+	char clan = -1;						// 소속팀
 
 	// 위치값
-	char posX;
-	int posY;
+	int posX = -1;
+	char posY = -1;
 
 public:
-	virtual bool MovePos(char nx, int ny) = 0;
+	virtual bool MovePos(int nx, char ny) = 0;
 
-	virtual bool SetPos(char x, int y) = 0;
+	virtual bool SetPos(int x, char y) = 0;
 
 	// getter & setter
 	virtual bool getAlive() {
@@ -34,10 +34,10 @@ public:
 	virtual moveSet getMoveset() {
 		return mset;
 	}
-	virtual char getPosX() {
+	virtual int getPosX() {
 		return posX;
 	}
-	virtual int getPosY() {
+	virtual char getPosY() {
 		return posY;
 	}
 	virtual char getClan() {
@@ -49,14 +49,14 @@ class King : Piece {
 private:
 	int check;
 
-	bool isCheck(char &kx, int &ky, int &x, int &y, Piece &obj) {
+	bool isCheck(int& kx, char& ky, int& x, char& y, Piece& obj) {
 		if (true) {
 			return true;
 		}
 		else {
 			return false;
 		}
-		
+
 	}
 
 	bool isCheckMate() {
@@ -65,6 +65,15 @@ private:
 
 
 public:
+	King(int x, char y, char clan = 'b', moveSet mv = { 0, 0, 0, 0, 0 }) { // 이슈 : 좌표 형을 변환했는데 계속 기존 변환형이 나옴.
+		PieceID = 0;
+		isAlive = true;
+		check = 0;
+		this->clan = clan;
+		SetPos(x, y);
+		mset = mv;
+	}
+
 	King() {
 		PieceID = 0;
 		isAlive = true;
@@ -74,27 +83,27 @@ public:
 		clan = 'b';
 	}
 
-	virtual bool SetPos(char x, int y) {
+	virtual bool SetPos(int x, char y) {
 		posX = x;
 		posY = y;
 
 		return true;
 	}
 
-	virtual bool MovePos(char nx, int ny) {
+	virtual bool MovePos(int nx, char ny) {
 		return true;
 	}
 
-	virtual bool getAlive() {
+	virtual bool getAlive() {		// C2247 방지를 위한 getter setter 재정의
 		return isAlive;
 	}
 	virtual moveSet getMoveset() {
 		return mset;
 	}
-	virtual char getPosX() {
+	virtual int getPosX() {
 		return posX;
 	}
-	virtual int getPosY() {
+	virtual char getPosY() {
 		return posY;
 	}
 	virtual char getClan() {
@@ -106,12 +115,13 @@ class Phone : public Piece {
 private:
 	bool isRush;
 
-	void Change_line(int &x, int &y) {				// 줄의 끝에 도달하면 줄 변경
+	void Change_line(int& x, char& y) {				// 줄의 끝에 도달하면 줄 변경
 
 	}
 
 public:
-	Phone(char x, int y, moveSet mv, char clan) {
+	Phone(int x, char y, char clan = 'w', moveSet mv = { 2, 0, 1, 0, 1 }) {
+		PieceID = 2;
 		isAlive = true;
 		mset = mv;
 		this->clan = clan;
@@ -120,103 +130,150 @@ public:
 	}
 
 	Phone() {
+		PieceID = 2;
 		isAlive = true;
 		isRush = true;
 		clan = 'w';
 		mset = { 0, 0, 0, 0, 0 };
 	}
 
-	bool SetPos(char x, int y) {
+	bool SetPos(int x, char y) {
 		posX = x;
 		posY = y;
 
 		return true;
 	}
 
-	bool MovePos(char nx, int ny) {
+	bool MovePos(int nx, char ny) {
 		posX = nx;
 		posY = ny;
 
 		return true;
 	}
+
+	virtual int getPosX() {
+		return posX;
+	}
+	virtual char getPosY() {
+		return posY;
+	}
+	virtual char getClan() {
+		return clan;
+	}
 };
 
 class Knight : public Piece {
 public:
-	Knight(char x, int y, moveSet mv, char clan) {
+	Knight(int x, char y, char clan = 'w', moveSet mv = { 1, 1, 1, 1, 2 }) {
+		PieceID = 5;
 		isAlive = true;
 		mset = mv;
 		this->clan = clan;
 		SetPos(x, y);
 	}
-
+	/*
 	Knight() {
+		PieceID = 5;
 		isAlive = true;
 		mset = { 0, 0, 0, 0, 0 };
 		clan = 'w';
 		SetPos('a', 0);
 	}
-
+	*/
+	virtual int getPosX() {
+		return posX;
+	}
+	virtual char getPosY() {
+		return posY;
+	}
+	virtual char getClan() {
+		return clan;
+	}
 };
 
 class Bishop : public Piece {
 public:
-	Bishop(char x, int y, moveSet mv, char clan) {
+	Bishop(int x, char y, char clan = 'w', moveSet mv = { 0, 0, 8, 8, 0 }) {
+		PieceID = 3;
 		isAlive = true;
 		mset = mv;
 		this->clan = clan;
 		SetPos(x, y);
 	}
-
+	/*
 	Bishop() {
+		PieceID = 3;
 		isAlive = true;
 		mset = { 0, 0, 0, 0, 0 };
 		clan = 'w';
 		SetPos('a', 0);
 	}
+	*/
+	virtual int getPosX() {
+		return posX;
+	}
+	virtual char getPosY() {
+		return posY;
+	}
+	virtual char getClan() {
+		return clan;
+	}
 };
-/*
+
 class Rook : public Piece {
-protected:
-	bool isAlive;
-	int moveset;
-
-	char posX;
-	int posY;
-
 public:
-	Bishop();
-
-
-
+	Rook(int x, char y, char clan = 'w', moveSet mv = { 8, 8, 0, 0, 0 }) {
+		PieceID = 3;
+		isAlive = true;
+		mset = mv;
+		this->clan = clan;
+		SetPos(x, y);
+	}
+	/*
+	Rook() {
+		PieceID = 3;
+		isAlive = true;
+		mset = { 0, 0, 0, 0, 0 };
+		clan = 'w';
+		SetPos('a', 0);
+	}
+	*/
+	virtual int getPosX() {
+		return posX;
+	}
+	virtual char getPosY() {
+		return posY;
+	}
+	virtual char getClan() {
+		return clan;
+	}
 };
 
 class Queen : public Piece {
-protected:
-	bool isAlive;
-	int moveset;
-
-	char posX;
-	int posY;
-
 public:
-	Bishop();
-
-
-
+	Queen(int x, char y, char clan = 'w', moveSet mv = { 8, 8, 8, 8, 0 }) {
+		PieceID = 1;
+		isAlive = true;
+		mset = mv;
+		this->clan = clan;
+		SetPos(x, y);
+	}
+	/*
+	Queen() {
+		PieceID = 1;
+		isAlive = true;
+		mset = { 0, 0, 0, 0, 0 };
+		clan = 'w';
+		SetPos('a', 0);
+	}
+	*/
+	virtual int getPosX() {
+		return posX;
+	}
+	virtual char getPosY() {
+		return posY;
+	}
+	virtual char getClan() {
+		return clan;
+	}
 };
-
-class King : public Piece{
-protected:
-	bool isAlive;
-	int moveset;
-
-	char posX;
-	int posY;
-
-public:
-	Bishop();
-
-
-};
-*/

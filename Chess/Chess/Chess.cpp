@@ -24,7 +24,7 @@ int main() {
         Board *board = initialize();
 
         startGame(*board);
-        delete board;
+        system("cls");
     }
     
     return 0;

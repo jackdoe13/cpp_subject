@@ -49,8 +49,8 @@ public:
 		cout << "3. 왕에 대한 정보 >>" << endl;
 		cout << target.getClan() << " ";
 		cout << target.getMoveset().mv_backward << target.getMoveset().mv_flag << target.getMoveset().mv_forward << target.getMoveset().mv_side_back << target.getMoveset().mv_side_for << " ";
-		cout << target.getPosX() << " ";
-		cout << target.getPosY() << " ";
+		cout << (int) target.getPosX() << " ";
+		cout << (char) target.getPosY() << " ";
 		cout << endl;
 	}
 };

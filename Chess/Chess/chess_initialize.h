@@ -1,5 +1,6 @@
 #pragma once
 #include <Windows.h>
+#include <stdlib.h>
 #include "Chess_Board.cpp"
 
 void gotoxy(int x, int y);
@@ -9,7 +10,7 @@ bool startGame(Board& board);
 
 bool startGame(Board& board) {
     cout << "머기중..." << endl;
-    Sleep(5000);
+    Sleep(500);
 
     cout << "끗." << endl;
     system("pause");
@@ -74,16 +75,31 @@ Board* initialize() {
     // white 폰 8개(수정 예정 : 무작위로 말 배치)
     srand(time(NULL));
 
-    moveSet mv1 = { 2, 0, 1, 0 };
     Phone phones_w[8];
     for (int i = 0; i < 8; i++) {
-        phones_w[i] = Phone(64 + (MAX_X - 1), 1 + i, mv1, 'w');
+        phones_w[i] = Phone(64 + (MAX_X - 1), 1 + i);
         board[MAX_X - 2][i] = true;
     }
 
     // black 킹 1개
-    King target = King();
-    board[0][2] = true;
+    int kx, ky;
+    while (true) {
+        kx = rand() / 5000;
+        ky = rand() / 5000;
+
+        if ((kx <= 0 || kx >= 8) || (ky <= 0 || ky >= 8)) {
+            continue;
+        }
+        else if (board[ky - 1][kx - 1] == true) {
+            continue;
+        }
+        else {
+            break;
+        }
+    }
+    
+    King target = King(kx, (char) (64 + ky));
+    board[ky - 1][kx - 1] = true;
 
     list_w.phones = phones_w;
 
