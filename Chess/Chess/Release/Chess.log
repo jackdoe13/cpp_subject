@@ -1,7 +1,0 @@
-﻿  Chess_Piece.cpp
-  코드를 생성하고 있습니다.
-  Previous IPDB and IOBJ mismatch, fall back to full compilation.
-C:\Users\334\Documents\cpp_subject\Chess\Chess\chess_initialize.h(110): warning C4172: 지역 변수 또는 임시: gameBoard의 주소를 반환하고 있습니다.
-  All 44 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
-  코드를 생성했습니다.
-  Chess.vcxproj -> C:\Users\334\Documents\cpp_subject\Chess\Release\Chess.exe

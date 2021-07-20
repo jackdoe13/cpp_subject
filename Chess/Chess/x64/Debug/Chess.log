@@ -1,9 +1,0 @@
-﻿  Chess.cpp
-C:\Users\334\Documents\cpp_subject\Chess\Chess\chess_initialize.h(76,15): warning C4244: '인수': 'time_t'에서 'unsigned int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
-C:\Users\334\Documents\cpp_subject\Chess\Chess\chess_initialize.h(115,19): warning C4838: 'int'에서 'SHORT'(으)로의 변환에는 축소 변환이 필요합니다.
-C:\Users\334\Documents\cpp_subject\Chess\Chess\chess_initialize.h(115,21): warning C4838: 'int'에서 'SHORT'(으)로의 변환에는 축소 변환이 필요합니다.
-  Chess_board.cpp
-  Chess_Piece.cpp
-  코드를 생성하고 있습니다...
-C:\Users\334\Documents\cpp_subject\Chess\Chess\chess_initialize.h(110): warning C4172: 지역 변수 또는 임시: gameBoard의 주소를 반환하고 있습니다.
-  Chess.vcxproj -> C:\Users\334\Documents\cpp_subject\Chess\x64\Debug\Chess.exe
